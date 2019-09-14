@@ -49359,6 +49359,15 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 var app = new Vue({
   el: '#app'
 });
+$(".btn-refresh").click(function () {
+  $.ajax({
+    type: 'GET',
+    url: '/refresh_captcha',
+    success: function success(data) {
+      $(".captcha span").html(data.captcha);
+    }
+  });
+});
 
 /***/ }),
 
@@ -49507,8 +49516,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\laravel6\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\laravel6\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\tugas1laravel\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\tugas1laravel\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

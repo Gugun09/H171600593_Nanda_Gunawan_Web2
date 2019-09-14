@@ -14,7 +14,9 @@
                         </div>
                     @endif
 
-                    Selamat Datang : {{ Auth::user()->name }}
+                    Selamat Datang  : {{ Auth::user()->name }} <br>
+                    Email           : {{ Auth::user()->email }} <br>
+                    No. Telepon     : {{ Auth::user()->telepon }}
                 </div>
             </div>
         </div>
