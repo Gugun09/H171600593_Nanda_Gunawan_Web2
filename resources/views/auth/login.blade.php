@@ -47,7 +47,7 @@
                                     <span>{!! captcha_img() !!}</span>
                                     <button type="button" class="btn btn-success btn-refresh">Refresh</button>
                                 </div>
-                                <input id="captcha" type="captcha" class="form-control @error('captcha') is-invalid @enderror" name="captcha" required autocomplete="new-captcha">
+                                <input id="captcha" type="captcha" class="form-control @error('captcha') is-invalid @enderror" name="captcha">
 
                                 @error('captcha')
                                     <span class="invalid-feedback" role="alert">
