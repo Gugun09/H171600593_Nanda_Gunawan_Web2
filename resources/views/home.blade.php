@@ -13,25 +13,14 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ Auth::user()->name }}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">{{ Auth::user()->email }}</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">{{ Auth::user()->telepon }}</h6>
+                        </div>
+                    </div>
 
-                    <table class="table">
-                        <thead class="thead-dark">
-                            <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Nama</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">No. Telepon</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                            <th scope="row">1</th>
-                            <td>{{ Auth::user()->name }}</td>
-                            <td>{{ Auth::user()->email }}</td>
-                            <td>{{ Auth::user()->telepon }}</td>
-                            </tr>
-                        </tbody>
-                    </table>
                 </div>
             </div>
         </div>

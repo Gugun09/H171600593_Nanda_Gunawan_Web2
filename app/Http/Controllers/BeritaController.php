@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Berita;
 
+use App\Kategori_berita;
+use App\Berita;
 use Illuminate\Http\Request;
 
 class BeritaController extends Controller
@@ -26,7 +27,9 @@ class BeritaController extends Controller
      */
     public function create()
     {
-        //
+        $kategori_berita = Kategori_Berita::pluck('nama','id');
+        
+        return view('berita.create', compact('kategori_berita'));
     }
 
     /**
@@ -37,7 +40,10 @@ class BeritaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input=$request->all();
+        Berita::create($input);
+
+        return redirect('/berita')->with('status','Berita Berhasil Ditambahkan');;
     }
 
     /**
@@ -46,9 +52,9 @@ class BeritaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Berita $berita)
     {
-        //
+        return view('berita.show',compact('berita'));
     }
 
     /**

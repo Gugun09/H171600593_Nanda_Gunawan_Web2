@@ -12,10 +12,10 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="telepon" class="col-md-4 col-form-label text-md-right">{{ __('No. Telepon') }}</label>
+                            <label for="telepon" class="col-md-4 col-form-label text-md-right">{{ __('No Handphone') }}</label>
 
                             <div class="col-md-6">
-                                <input id="telepon" type="text" class="form-control @error('telepon') is-invalid @enderror" name="telepon" value="{{ old('telepon') }}" required autocomplete="telepon" autofocus>
+                                <input id="telepon" type="telepon" class="form-control @error('telepon') is-invalid @enderror" name="telepon" value="{{ old('telepon') }}" required autocomplete="telepon" autofocus>
 
                                 @error('telepon')
                                     <span class="invalid-feedback" role="alert">
@@ -40,14 +40,19 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="captcha" class="col-md-4 col-form-label text-md-right">{{ __('Captcha') }}</label>
+                            <div class="offset-md-4 col-md-6">
+                                <div class="refreshcaptcha">
+                                {!! captcha_img(); !!}
+                                </div>
+                                <a href="javascript:void(0)" onclick="refreshCaptcha()" class="badge badge-primary">Refresh</a>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="captcha" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Captcha') }}</label>
 
                             <div class="col-md-6">
-                                <div class="captcha">
-                                    <span>{!! captcha_img() !!}</span>
-                                    <button type="button" class="btn btn-success btn-refresh">Refresh</button>
-                                </div>
-                                <input id="captcha" type="captcha" class="form-control @error('captcha') is-invalid @enderror" name="captcha">
+                                <input id="captcha" type="text" class="form-control @error('captcha') is-invalid @enderror" name="captcha" required>
 
                                 @error('captcha')
                                     <span class="invalid-feedback" role="alert">
@@ -88,4 +93,21 @@
         </div>
     </div>
 </div>
+@endsection
+@section('scripts')
+    <script>
+        function refreshCaptcha(){
+            $.ajax({
+                url: "/refreshcaptcha",
+                type: 'get',
+                dateType: 'html',
+                success: function(json) {
+                    $('.refreshcaptcha').html(json);
+                },
+                error: function(data){
+                    alert('Coba Lagi!');
+                }
+            });
+        }
+    </script>
 @endsection

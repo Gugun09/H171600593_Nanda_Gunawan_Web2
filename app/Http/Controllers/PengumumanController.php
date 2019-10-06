@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Pengumuman;
+use App\Kategori_Pengumuman;
 use Illuminate\Http\Request;
 
 class PengumumanController extends Controller
@@ -26,7 +27,9 @@ class PengumumanController extends Controller
      */
     public function create()
     {
-        //
+        $kategori_pengumuman = Kategori_Pengumuman::pluck('nama','id');
+
+        return view('pengumuman.create', compact('kategori_pengumuman'));
     }
 
     /**
@@ -37,7 +40,10 @@ class PengumumanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        Pengumuman::create($input);
+
+        return redirect('/pengumuman')->with('status','Data Pengumuman Berhasil Ditambahkan');
     }
 
     /**
@@ -48,7 +54,7 @@ class PengumumanController extends Controller
      */
     public function show(Pengumuman $pengumuman)
     {
-        //
+        return view('pengumuman.show', compact('pengumuman'));
     }
 
     /**

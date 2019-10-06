@@ -5,24 +5,35 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Kategori Artikel</div>
+                <div class="card-header">List Kategori Artikel</div>
                 <div class="card-body">
+                <a href="/kategori_artikel/create" class="btn btn-success">Tambah Data Artikel</a>
+                <ul class="list-group pt-2">
+                @if (session('status'))
+                    <div class="alert alert-success">
+                    {{ session('status') }}
+                    </div>
+                @endif
                 <table class="table table-bordered">
-                    <thead class="bg-warning">
+                    <thead class="bg-info">
                         <tr>
-                        <th scope="col">Id</th>
                         <th scope="col">Nama</th>
-                        <th scope="col">User_id</th>
+                        <th scope="col">Create</th>
+                        <th scope="col">Aksi</th>
+
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach( $kategori_artikel as $item)
+                        @foreach( $kategori_artikel as $kategori_artikel)
                         <tr>
-                        <td>{!! $item->id !!}</td>
-                        <td>{!! $item->nama !!}</td>
-                        <td>{!! $item->users_id !!}</td>
+                        <td>{!! $kategori_artikel->nama !!}</td>
+                        <td>{!! $kategori_artikel->created_at !!}</td>
+                        <td>
+                            <a href="/kategori_artikel/{{$kategori_artikel->id}}" class="badge badge-info">Detail</a>
+                        </td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
+                </ul>
 		@endsection

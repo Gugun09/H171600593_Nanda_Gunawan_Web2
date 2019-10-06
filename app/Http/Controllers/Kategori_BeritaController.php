@@ -26,7 +26,7 @@ class Kategori_BeritaController extends Controller
      */
     public function create()
     {
-        //
+        return view('kategori_berita.create');
     }
 
     /**
@@ -37,7 +37,11 @@ class Kategori_BeritaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+
+        Kategori_Berita::create($input);
+
+        return redirect('/kategori_berita')->with('status','Kategori Berita Berhasil Ditambahkan');
     }
 
     /**
@@ -46,9 +50,9 @@ class Kategori_BeritaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Kategori_Berita $kategori_berita)
     {
-        //
+        return view('kategori_berita.show',compact('kategori_berita'));
     }
 
     /**

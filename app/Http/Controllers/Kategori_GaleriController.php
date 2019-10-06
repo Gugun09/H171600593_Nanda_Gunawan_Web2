@@ -26,7 +26,7 @@ class Kategori_GaleriController extends Controller
      */
     public function create()
     {
-        //
+        return view('kategori_galeri.create');
     }
 
     /**
@@ -37,7 +37,11 @@ class Kategori_GaleriController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+
+        Kategori_Galeri::create($input);
+
+        return redirect('/kategori_galeri')->with('status','Kategori Galeri Berhasil Ditambahkan');
     }
 
     /**
@@ -46,9 +50,9 @@ class Kategori_GaleriController extends Controller
      * @param  \App\Kategori_Galeri  $kategori_Galeri
      * @return \Illuminate\Http\Response
      */
-    public function show(Kategori_Galeri $kategori_Galeri)
+    public function show(Kategori_Galeri $kategori_galeri)
     {
-        //
+        return view('kategori_galeri.show',compact('kategori_galeri'));
     }
 
     /**

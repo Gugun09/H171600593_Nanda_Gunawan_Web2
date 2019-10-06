@@ -26,7 +26,7 @@ class Kategori_ArtikelController extends Controller
      */
     public function create()
     {
-        //
+        return view('kategori_artikel.create');
     }
 
     /**
@@ -37,7 +37,11 @@ class Kategori_ArtikelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+
+        Kategori_Artikel::create($input);
+
+        return redirect('/kategori_artikel')->with('status','Kategori Artikel Berhasil Ditambahkan');
     }
 
     /**
@@ -46,9 +50,9 @@ class Kategori_ArtikelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Kategori_Artikel $kategori_artikel)
     {
-        //
+        return view('kategori_artikel.show',compact('kategori_artikel'));
     }
 
     /**
@@ -59,7 +63,7 @@ class Kategori_ArtikelController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
